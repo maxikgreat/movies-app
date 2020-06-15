@@ -16,3 +16,5 @@ export default function index() {
 }
 
 AppRegistry.registerComponent(appName, () => index);
+
+//#4a2481 main color

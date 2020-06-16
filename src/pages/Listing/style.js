@@ -7,15 +7,17 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.colors.background,
   },
   header: {
-    flex: 0.1,
+    flex: 0.15,
     padding: 15,
   },
   main: {
     padding: 15,
+    flex: 0.85,
   },
   input: {
-    height: 50
-  }
+    height: 50,
+    marginBottom: 10,
+  },
 });
 
 export const primaryColor = theme.colors.primary;

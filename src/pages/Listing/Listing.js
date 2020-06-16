@@ -1,12 +1,18 @@
 import React from 'react';
 import {SafeAreaView, View, FlatList} from 'react-native';
-import {styles, textColor} from './style';
+import {styles, accentColor} from './style';
 import {Button, TextInput, Title, Paragraph} from 'react-native-paper';
 import {useMovies} from '../../hooks/useMovies';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { StartType } from '../../components/StartType/StartType';
 
 export const Listing = () => {
-  const {movies, fetchList} = useMovies();
+  const {
+    movies,
+    filters,
+    setFilters,
+    fetchList
+  } = useMovies();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -14,13 +20,23 @@ export const Listing = () => {
         <TextInput
           placeholder='Start typing...'
           style={styles.input}
+          value={filters.input}
+          onChangeText={text => setFilters({...filters, input: text})}
         />
         <View>
-          <Icon name='filter' size={30} />
+          <Button 
+            icon='filter'
+            mode='contained'
+            color={accentColor}
+          >Filters</Button>
         </View>
       </View>
       <View style={styles.main}>
-        <Title>main list</Title>
+        {
+          !filters.input
+          ? <StartType />
+          : null
+        }
       </View>
     </SafeAreaView>
   );

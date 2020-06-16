@@ -32,6 +32,7 @@ export const App = () => {
         <StackNavigator.Screen
           name='Movie'
           component={Movie}
+          options={navigationHeader}
         />
       </StackNavigator.Navigator>
     </>

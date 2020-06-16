@@ -20,7 +20,7 @@ import {
 const App = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="dark-content" backgroundColor=""/>
       <SafeAreaView>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"

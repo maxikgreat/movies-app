@@ -1,11 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {SafeAreaView, Text} from 'react-native';
+import {styles} from './style';
 
 
 export const Listing = () => {
   return (
-    <View>
+    <SafeAreaView style={styles.container}>
       <Text>Listing</Text>
-    </View>
-  )
+    </SafeAreaView>
+  );
 };

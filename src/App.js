@@ -1,6 +1,6 @@
 
 import React from 'react';
-import {StatusBar, Platform} from 'react-native';
+import {StatusBar} from 'react-native';
 import {theme} from './theme';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Listing} from './pages/Listing/Listing';
@@ -8,21 +8,26 @@ import {Movie} from './pages/Movie/Movie';
 
 const StackNavigator = createStackNavigator();
 
-export const App = () => {
+const navigationHeader = {
+  headerStyle: {
+    backgroundColor: theme.colors.background,
+  },
+  headerTintColor: theme.colors.text,
+  headerTintStyle: {
+    fontWeight: 'bold',
+  },
+};
 
-  const renderStatusBar = () => {
-    return Platform.OS === 'ios' 
-      ? <StatusBar barStyle='dark-content'/>
-      : <StatusBar barStyle='light-content' backgroundColor={theme.colors.primary} />
-  };
+export const App = () => {
 
   return (
     <>
-      {renderStatusBar()}
-      <StackNavigator.Navigator mode='card' initialRouteName='Listing'>
+      <StatusBar barStyle='light-content' backgroundColor={theme.colors.background} />
+      <StackNavigator.Navigator mode='card' initialRouteName='Movies'>
         <StackNavigator.Screen
-          name='Listing'
+          name='Movies'
           component={Listing}
+          options={navigationHeader}
         />
         <StackNavigator.Screen
           name='Movie'

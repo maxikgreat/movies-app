@@ -16,7 +16,6 @@ export default function index() {
   const [isConnected, setConnected] = useState(true);
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener(state => {
-      console.log(state.isConnected);
       setConnected(state.isConnected);
     });
     SplashScreen.hide();

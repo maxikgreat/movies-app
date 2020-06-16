@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image} from 'react-native';
+import {SafeAreaView, Image} from 'react-native';
 import noInternetImg from '../../images/no_internet.png';
 import {Button, Title, Paragraph} from 'react-native-paper';
 import {styles, accentColor} from './styles';
@@ -7,7 +7,7 @@ import {DevSettings} from 'react-native';
 
 export const NoInternetConnection = () => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Image source={noInternetImg} style={styles.image} />
       <Title style={styles.title}>No internet</Title>
       <Paragraph style={styles.paragraph}>To use this app you need have access to internet connection</Paragraph>
@@ -16,6 +16,6 @@ export const NoInternetConnection = () => {
         color={accentColor}
         onPress={() => DevSettings.reload()}
       >Reload App</Button>
-    </View>
+    </SafeAreaView>
   );
 };

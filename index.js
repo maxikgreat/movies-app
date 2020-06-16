@@ -3,11 +3,13 @@ import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
 import {AppRegistry} from 'react-native';
 import {name as appName} from './app.json';
-import App from './src/App';
+import {App} from './src/App';
 import NetInfo from '@react-native-community/netinfo';
 import SplashScreen from 'react-native-splash-screen';
 import {NoInternetConnection} from './src/components/NoInternetConnection/NoInternetConnection';
-import { Provider as PaperProvider } from 'react-native-paper';
+import {Provider as PaperProvider} from 'react-native-paper';
+import {Provider as StoreProvider} from 'react-redux';
+import {NavigationContainer} from '@react-navigation/native';
 import {theme} from './src/theme';
 
 export default function index() {
@@ -24,15 +26,15 @@ export default function index() {
   }, []);
   return (
     <PaperProvider theme={theme}>
-      {
-        isConnected
-        ? <App />
-        : <NoInternetConnection />
-      }
+      <NavigationContainer>
+        {
+          isConnected
+          ? <App />
+          : <NoInternetConnection />
+        }
+      </NavigationContainer>
     </PaperProvider>
   );
 }
 
 AppRegistry.registerComponent(appName, () => index);
-
-//#4a2481 main color

@@ -41,7 +41,7 @@ export const Listing = ({movies, filters, setFilters, pageChangedHandler}) => {
               renderItem={item => <MovieCard movie={item.item} delayAnimation={item.index * 100}/>}
               keyExtractor={item => item.id}
               numColumns={2}
-              onEndReachedThreshold={0.2}
+              onEndReachedThreshold={0.5}
               onEndReached={() => nextPage()}
           />
         </>

@@ -5,6 +5,7 @@ import {
   LOADER_HIDE,
   LOADER_LISTING_HIDE,
   LOADER_LISTING_SHOW,
+  FETCH_MOVIE_BY_ID,
 } from '../types';
 import axios from 'axios';
 import config from '../../../config';
@@ -27,7 +28,6 @@ export const fetchListAction = (filters) => {
       return;
     }
     const request = createRequest(filters);
-    console.log(request);
     try {
       const response = await axios.get(request);
       dispatch({
@@ -60,6 +60,23 @@ export const fetchNextPageAction = (filters) => {
     }
     dispatch({
       type: LOADER_LISTING_HIDE,
+    });
+  };
+};
+
+export const fetchMovieByIdAction = (id) => {
+  return async dispatch => {
+    dispatch({
+      type: LOADER_SHOW,
+    });
+    const request = `${BASE_URL}movie/${id}?api_key=${API_KEY}&`;
+    const response = await axios.get(request);
+    dispatch({
+      type: FETCH_MOVIE_BY_ID,
+      payload: response.data,
+    });
+    dispatch({
+      type: LOADER_HIDE,
     });
   };
 };

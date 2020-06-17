@@ -5,8 +5,10 @@ import {styles, accentColor, redColor, greenColor} from './styles';
 import noImage from '../../images/no_image.png';
 import adultImage from '../../images/adult.png';
 import * as Animatable from 'react-native-animatable';
+import {useNavigation} from '@react-navigation/native';
 
 export const MovieCard = ({movie, delayAnimation}) => {
+  const navigation = useNavigation();
 
   const checkPopularity = () => {
     const popularity = {value: parseFloat((movie.popularity / 100).toFixed(2))};
@@ -32,7 +34,7 @@ export const MovieCard = ({movie, delayAnimation}) => {
 
   return (
     <Animatable.View
-      animation='zoomInUp' 
+      animation='zoomInUp'
       style={styles.cardContainer}
       delay={delayAnimation}
     >
@@ -44,7 +46,7 @@ export const MovieCard = ({movie, delayAnimation}) => {
         }
         <Image
           style={styles.posterImage}
-          source={movie.poster_path 
+          source={movie.poster_path
             ? {uri: `https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
             : noImage
           }
@@ -65,6 +67,7 @@ export const MovieCard = ({movie, delayAnimation}) => {
         <Button
           mode='contained'
           color={accentColor}
+          onPress={() => navigation.navigate('Movie', {id: movie.id})}
         >More</Button>
         <Paragraph>Votes:
           <Paragraph style={styles.textBold}>{movie.vote_count}</Paragraph>

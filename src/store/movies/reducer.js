@@ -11,6 +11,7 @@ const initialState = {
   loadingListing: false,
   error: '',
   listing: {},
+  movie: {},
 };
 
 export const moviesReducer = (state = initialState, {type, payload}) => {
@@ -31,6 +32,7 @@ export const moviesReducer = (state = initialState, {type, payload}) => {
     case FETCH_MOVIE_BY_ID:
       return {
         ...state,
+        movie: payload,
       };
     case LOADER_SHOW:
       return {

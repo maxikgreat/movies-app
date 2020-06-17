@@ -1,0 +1,44 @@
+import {StyleSheet} from 'react-native';
+import {theme} from '../../theme';
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: theme.colors.background,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  backgroundImageContainer: {
+    width: '100%',
+    height: '100%',
+  },
+  backgroundImage: {
+    resizeMode: 'cover',
+  },
+  wrapper: {
+    flex: 1,
+    padding: 15,
+  },
+  absolute: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  headerContainer: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  posterImage: {
+    width: '100%',
+    flex: 0.6,
+    resizeMode: 'cover',
+  },
+  statsContainer: {
+    flex: 0.4,
+  },
+});
+
+export const accentColor = theme.colors.accent;
+export const primaryColor = theme.colors.primary;

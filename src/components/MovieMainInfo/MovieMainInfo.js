@@ -8,30 +8,30 @@ export const MovieMainInfo = ({title, desc, genres, year, countries, companies})
   const renderGenres = () => {
     return genres.map((genre,index) => {
       return genres.length - 1 === index
-        ? <Title>{genre.name}</Title>
-        : <Title>{genre.name}/</Title>;
+        ? <Title key={index}>{genre.name}</Title>
+        : <Title key={index}>{genre.name}/</Title>;
     });
   };
 
   const renderCountries = () => {
     return countries.map((country, index) => {
       return countries.length - 1 === index
-        ? <Text>{country.name}</Text>
-        : <Text>{country.name}, </Text>;
+        ? <Text key={index} style={styles.companyName}>{country.name}</Text>
+        : <Text key={index} style={styles.companyName}>{country.name}, </Text>;
     });
   };
 
   const renderCompanies = () => {
-    return companies.map(company => {
+    return companies.map((company, index) => {
       return (
-        <View style={styles.company}>
+        <View style={styles.company} key={index}>
           {company.logo_path ?
             <Image
               style={styles.companyImage}
               source={{uri: `https://image.tmdb.org/t/p/w200/${company.logo_path}`}}
             />
             : <Paragraph style={styles.joke}>There's can be your advertisment :)</Paragraph>
-          }
+        }
           <Paragraph style={styles.companyName}>{company.name}</Paragraph>
         </View>
       );

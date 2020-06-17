@@ -44,6 +44,7 @@ export const styles = StyleSheet.create({
   },
   companyName: {
     color: theme.colors.accent,
+    textAlign: 'center',
   },
 });
 

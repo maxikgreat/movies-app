@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {SafeAreaView, View, Image, ImageBackground} from 'react-native';
+import {SafeAreaView, View, Image, ImageBackground, ScrollView} from 'react-native';
 import {styles, accentColor} from './styles';
 import {ActivityIndicator} from 'react-native-paper';
 import {useMovies} from '../../hooks/useMovies';
@@ -7,7 +7,6 @@ import {BlurView} from '@react-native-community/blur';
 import noBackdropImage from '../../images/no_backdrop.png';
 import noImage from '../../images/no_image.png';
 import {MovieStats} from '../../components/MovieStats/MovieStats';
-import {ScrollView} from 'react-native-gesture-handler';
 import {MovieMainInfo} from '../../components/MovieMainInfo/MovieMainInfo';
 
 
@@ -24,7 +23,7 @@ export const Movie = ({route}) => {
   return (
     <SafeAreaView style={styles.container}>
       {
-        movies.loading
+        Object.keys(movies.movie).length === 0
         ? <ActivityIndicator size='large' color={accentColor} />
         : <>
             <ImageBackground

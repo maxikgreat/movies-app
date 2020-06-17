@@ -5,5 +5,5 @@ import {moviesReducer} from './movies/reducer';
 
 export const store = createStore(
   moviesReducer,
-  applyMiddleware(thunk)
+  applyMiddleware(thunk, logger)
 );

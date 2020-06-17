@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {SafeAreaView, View} from 'react-native';
-import {Title, Paragraph, ActivityIndicator} from 'react-native-paper';
-import {styles, accentColor, primaryColor} from './styles';
-import { FlatList } from 'react-native-gesture-handler';
+import {ActivityIndicator} from 'react-native-paper';
+import {styles, accentColor} from './styles';
+import {FlatList} from 'react-native-gesture-handler';
 import {MovieCard} from '../MovieCard/MovieCard';
 
-export const Listing = ({movies}) => {
+export const Listing = ({movies, filters, setFilters, pageChangedHandler}) => {
+  const {total_pages} = movies.listing;
+
+  const nextPage = () => {
+    if (filters.page < total_pages) {
+      setFilters(prevState => ({
+        ...prevState,
+        page: prevState.page + 1,
+      }));
+    }
+  };
+
+  useEffect(() => {
+    pageChangedHandler();
+  }, [filters.page]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -14,12 +28,21 @@ export const Listing = ({movies}) => {
         ? <View style={styles.loaderContainer}>
           <ActivityIndicator size='large' color={accentColor}/>
         </View>
-        : <FlatList
-          data={movies.listing.results}
-          renderItem={item => <MovieCard movie={item.item} delayAnimation={item.index * 100}/>}
-          keyExtractor={item => item.id}
-          numColumns={2}
-         />
+        : <>
+            {movies.loadingListing &&
+              <View style={styles.listingLoaderContainer}>
+                <ActivityIndicator size='large' color={accentColor} />
+              </View>
+            }
+            <FlatList
+              data={movies.listing.results}
+              renderItem={item => <MovieCard movie={item.item} delayAnimation={item.index * 100}/>}
+              keyExtractor={item => item.id}
+              numColumns={2}
+              onEndReachedThreshold={0.2}
+              onEndReached={() => nextPage()}
+          />
+        </>
       }
     </SafeAreaView>
   );

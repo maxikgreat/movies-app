@@ -12,11 +12,12 @@ export const Home = () => {
     filters,
     setFilters,
     filtersChangedHandler,
+    pageChangedHandler,
   } = useMovies();
 
   useEffect(() => {
     filtersChangedHandler();
-  }, [filters]);
+  }, [filters.query]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -25,7 +26,7 @@ export const Home = () => {
           placeholder='Start typing...'
           style={styles.input}
           value={filters.input}
-          onChangeText={text => setFilters({...filters, input: text})}
+          onChangeText={text => setFilters({...filters, query: text, page: 1})}
         />
         <View>
           <Button 
@@ -37,9 +38,14 @@ export const Home = () => {
       </View>
       <View style={styles.main}>
         {
-          !filters.input
+          !filters.query
           ? <StartType />
-          : <Listing movies={movies}/>
+          : <Listing 
+              movies={movies} 
+              filters={filters}
+              setFilters={setFilters}
+              pageChangedHandler={pageChangedHandler}
+            />
         }
       </View>
     </SafeAreaView>

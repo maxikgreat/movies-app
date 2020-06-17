@@ -3,6 +3,7 @@ import {View, Image} from 'react-native';
 import {Title, Paragraph, Button, ProgressBar} from 'react-native-paper';
 import {styles, accentColor, redColor, greenColor} from './styles';
 import noImage from '../../images/no_image.png';
+import adultImage from '../../images/adult.png';
 import * as Animatable from 'react-native-animatable';
 
 export const MovieCard = ({movie, delayAnimation}) => {
@@ -22,22 +23,27 @@ export const MovieCard = ({movie, delayAnimation}) => {
   };
 
   const checkTitle = () => {
-    if (movie.title.length > 28) {
-      return `${movie.title.substr(0, 25)}...`;
+    if (movie.title.length > 26) {
+      return `${movie.title.substr(0, 23)}...`;
     } else {
       return movie.title;
     }
   };
 
   return (
-    <Animatable.View 
+    <Animatable.View
       animation='zoomInUp' 
       style={styles.cardContainer}
       delay={delayAnimation}
     >
       <View style={styles.cardImage}>
+        {
+          movie.adult
+          ? <Image source={adultImage} style={styles.adultImage} />
+          : null
+        }
         <Image
-          style={styles.image}
+          style={styles.posterImage}
           source={movie.poster_path 
             ? {uri: `https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
             : noImage

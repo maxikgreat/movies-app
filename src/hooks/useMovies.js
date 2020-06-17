@@ -1,21 +1,22 @@
 import {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {fetchListAction} from '../store/movies/actions';
+import {fetchListAction, fetchNextPageAction} from '../store/movies/actions';
 
 export const useMovies = () => {
   const movies = useSelector(state => state);
   const dispatch = useDispatch();
 
   const [filters, setFilters] = useState({
-    input: '',
+    page: 1,
+    query: '',
   });
 
-  const filtersChangedHandler = (text) => {
-    fetchList(filters.input);
+  const filtersChangedHandler = () => {
+    dispatch(fetchListAction(filters));
   };
 
-  const fetchList = (query) => {
-    dispatch(fetchListAction(query));
+  const pageChangedHandler = () => {
+    dispatch(fetchNextPageAction(filters));
   };
 
   return {
@@ -23,5 +24,6 @@ export const useMovies = () => {
     filters,
     setFilters,
     filtersChangedHandler,
+    pageChangedHandler,
   };
 };

@@ -16,12 +16,20 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: 140,
   },
-  image: {
+  posterImage: {
     width: '100%',
     height: '100%',
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
-    resizeMode: 'cover',
+    resizeMode: 'center',
+  },
+  adultImage: {
+    position: 'absolute',
+    top: '5%',
+    left: '5%',
+    width: 50,
+    height: 50,
+    zIndex: 10,
   },
   cardContent: {
     width: '100%',

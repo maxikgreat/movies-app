@@ -25,8 +25,8 @@ export const MovieCard = ({movie, delayAnimation}) => {
   };
 
   const checkTitle = () => {
-    if (movie.title.length > 26) {
-      return `${movie.title.substr(0, 23)}...`;
+    if (movie.title.length > 23) {
+      return `${movie.title.substr(0, 20)}...`;
     } else {
       return movie.title;
     }

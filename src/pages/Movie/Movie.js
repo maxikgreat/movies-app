@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView, View, Image, ImageBackground} from 'react-native';
-import {styles, accentColor, primaryColor} from './styles';
-import {Title, Paragraph, ActivityIndicator} from 'react-native-paper';
+import {styles, accentColor} from './styles';
+import {ActivityIndicator} from 'react-native-paper';
 import {useMovies} from '../../hooks/useMovies';
-import {BlurView} from "@react-native-community/blur";
+import {BlurView} from '@react-native-community/blur';
 import noBackdropImage from '../../images/no_backdrop.png';
 import noImage from '../../images/no_image.png';
 import {MovieStats} from '../../components/MovieStats/MovieStats';

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, View,} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import {styles, accentColor} from './style';
 import {Button, TextInput} from 'react-native-paper';
 import {useMovies} from '../../hooks/useMovies';
@@ -23,40 +23,40 @@ export const Home = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <FilterOptions
-        visible={modalFilters}
-        setVisible={setModalFilters}
-        filters={filters}
-        setFilters={setFilters}
-      />
-      <View style={styles.header}>
-        <TextInput
-          placeholder='Start typing...'
-          style={styles.input}
-          value={filters.input}
-          onChangeText={text => setFilters({...filters, query: text, page: 1})}
+        <FilterOptions
+          visible={modalFilters}
+          setVisible={setModalFilters}
+          filters={filters}
+          setFilters={setFilters}
         />
-        <View>
-          <Button 
-            icon='filter'
-            mode='contained'
-            color={accentColor}
-            onPress={() => setModalFilters(true)}
-          >Filters</Button>
+        <View style={styles.header}>
+          <TextInput
+            placeholder='Start typing...'
+            style={styles.input}
+            value={filters.input}
+            onChangeText={text => setFilters({...filters, query: text, page: 1})}
+          />
+          <View>
+            <Button 
+              icon='filter'
+              mode='contained'
+              color={accentColor}
+              onPress={() => setModalFilters(true)}
+            >Filters</Button>
+          </View>
         </View>
-      </View>
-      <View style={styles.main}>
-        {
-          !filters.query
-          ? <StartType />
-          : <Listing 
-              movies={movies} 
-              filters={filters}
-              setFilters={setFilters}
-              pageChangedHandler={pageChangedHandler}
-            />
-        }
-      </View>
+        <View style={styles.main}>
+          {
+            !filters.query
+            ? <StartType />
+            : <Listing 
+                movies={movies} 
+                filters={filters}
+                setFilters={setFilters}
+                pageChangedHandler={pageChangedHandler}
+              />
+          }
+        </View>
     </SafeAreaView>
   );
 };

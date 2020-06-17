@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
     bottom: 0,
   },
   headerContainer: {
-    flex: 1,
+    height: 350,
     flexDirection: 'row',
   },
   posterImage: {

@@ -6,7 +6,9 @@ import {useMovies} from '../../hooks/useMovies';
 import {BlurView} from "@react-native-community/blur";
 import noBackdropImage from '../../images/no_backdrop.png';
 import noImage from '../../images/no_image.png';
-import { MovieStats } from '../../components/MovieStats/MovieStats';
+import {MovieStats} from '../../components/MovieStats/MovieStats';
+import {ScrollView} from 'react-native-gesture-handler';
+import {MovieMainInfo} from '../../components/MovieMainInfo/MovieMainInfo';
 
 
 export const Movie = ({route}) => {
@@ -37,25 +39,34 @@ export const Movie = ({route}) => {
                 blurType='dark'
                 blurAmount={10}
               />
-              <View style={styles.headerContainer}>
-                <Image
-                  style={styles.posterImage}
-                  source={movie.poster_path
-                    ? {uri: `https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
-                    : noImage
-                  }
-                />
-                <View style={styles.statsContainer}>
-                  <MovieStats 
-                    popularity={movie.popularity.toFixed(1)}
-                    votes={movie.vote_count}
-                    average={movie.vote_average}
+              <ScrollView>
+                <View style={styles.headerContainer}>
+                  <Image
+                    style={styles.posterImage}
+                    source={movie.poster_path
+                      ? {uri: `https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+                      : noImage
+                    }
+                  />
+                  <View style={styles.statsContainer}>
+                    <MovieStats 
+                      popularity={movie.popularity.toFixed(1)}
+                      votes={movie.vote_count}
+                      average={movie.vote_average}
+                    />
+                  </View>
+                </View>
+                <View style={styles.wrapper}>
+                  <MovieMainInfo
+                    title={movie.title}
+                    desc={movie.overview}
+                    genres={movie.genres}
+                    year={movie.release_date.substr(0,4)}
+                    countries={movie.production_countries}
+                    companies={movie.production_companies}
                   />
                 </View>
-              </View>
-              <View style={styles.wrapper}>
-                <Title>{movie.title}</Title>
-              </View>
+              </ScrollView>
             </ImageBackground>
         </>
       }

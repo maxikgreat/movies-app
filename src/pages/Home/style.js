@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     flex: 0.9,
   },
   input: {
-    height: 50,
+    height: 35,
     marginBottom: 10,
   },
 });

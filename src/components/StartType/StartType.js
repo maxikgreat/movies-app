@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, Image, Keyboard} from 'react-native';
+import {SafeAreaView, Image, Keyboard, Platform} from 'react-native';
 import {Title} from 'react-native-paper';
 import {styles, accentColor} from './styles';
 import Icon from 'react-native-vector-icons/Entypo';
@@ -10,8 +10,10 @@ import * as Animatable from 'react-native-animatable';
 export const StartType = () => {
   const [imageVisible, setVisible] = useState(true);
   useEffect(() => {
-    Keyboard.addListener('keyboardDidShow', () => setVisible(false));
-    Keyboard.addListener('keyboardDidHide', () => setVisible(true));
+    if (Platform.OS === 'android') {
+      Keyboard.addListener('keyboardDidShow', () => setVisible(false));
+      Keyboard.addListener('keyboardDidHide', () => setVisible(true));
+    }
   }, []);
 
   return (

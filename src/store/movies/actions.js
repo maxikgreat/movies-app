@@ -27,6 +27,7 @@ export const fetchListAction = (filters) => {
       return;
     }
     const request = createRequest(filters);
+    console.log(request);
     try {
       const response = await axios.get(request);
       dispatch({

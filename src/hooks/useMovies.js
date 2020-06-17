@@ -9,6 +9,9 @@ export const useMovies = () => {
   const [filters, setFilters] = useState({
     page: 1,
     query: '',
+    include_adult: false,
+    region: '',
+    year: '',
   });
 
   const filtersChangedHandler = () => {

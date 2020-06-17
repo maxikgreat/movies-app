@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Image} from 'react-native';
 import {Title, Paragraph} from 'react-native-paper';
 import {styles} from './styles';
+import noCompanyLogoImage from '../../images/no_company_logo.png';
 
 export const MovieMainInfo = ({title, desc, genres, year, countries, companies}) => {
 
@@ -25,13 +26,13 @@ export const MovieMainInfo = ({title, desc, genres, year, countries, companies})
     return companies.map((company, index) => {
       return (
         <View style={styles.company} key={index}>
-          {company.logo_path ?
             <Image
               style={styles.companyImage}
-              source={{uri: `https://image.tmdb.org/t/p/w200/${company.logo_path}`}}
+              source={company.logo_path ? 
+                {uri: `https://image.tmdb.org/t/p/w200/${company.logo_path}`}
+                : noCompanyLogoImage
+              }
             />
-            : <Paragraph style={styles.joke}>There's can be your advertisment :)</Paragraph>
-        }
           <Paragraph style={styles.companyName}>{company.name}</Paragraph>
         </View>
       );

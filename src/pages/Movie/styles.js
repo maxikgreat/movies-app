@@ -35,6 +35,11 @@ export const styles = StyleSheet.create({
     flex: 0.6,
     resizeMode: 'cover',
   },
+  noPosterImage: {
+    width: '100%',
+    flex: 0.6,
+    resizeMode: 'center',
+  },
   statsContainer: {
     flex: 0.4,
   },

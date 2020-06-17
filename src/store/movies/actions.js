@@ -6,6 +6,7 @@ import {
   LOADER_LISTING_HIDE,
   LOADER_LISTING_SHOW,
   FETCH_MOVIE_BY_ID,
+  CLEAR_MOVIE,
 } from '../types';
 import axios from 'axios';
 import config from '../../../config';
@@ -80,3 +81,12 @@ export const fetchMovieByIdAction = (id) => {
     });
   };
 };
+
+export const clearActiveMovieAction = () => {
+  return dispatch => {
+    dispatch({
+      type: CLEAR_MOVIE,
+    });
+  };
+};
+

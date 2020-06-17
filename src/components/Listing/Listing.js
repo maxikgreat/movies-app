@@ -4,6 +4,7 @@ import {ActivityIndicator} from 'react-native-paper';
 import {styles, accentColor} from './styles';
 import {FlatList} from 'react-native-gesture-handler';
 import {MovieCard} from '../MovieCard/MovieCard';
+import {EmptyResultsList} from '../EmptyResultsList/EmptyResultsList';
 
 export const Listing = ({movies, filters, setFilters, pageChangedHandler}) => {
   const {total_pages} = movies.listing;
@@ -43,6 +44,7 @@ export const Listing = ({movies, filters, setFilters, pageChangedHandler}) => {
               numColumns={2}
               onEndReachedThreshold={0.5}
               onEndReached={() => nextPage()}
+              ListEmptyComponent={EmptyResultsList}
           />
         </>
       }

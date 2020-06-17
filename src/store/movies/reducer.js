@@ -4,6 +4,7 @@ import {
   NEXT_PAGE,
   LOADER_LISTING_SHOW,
   LOADER_LISTING_HIDE,
+  CLEAR_MOVIE,
 } from '../types';
 
 const initialState = {
@@ -33,6 +34,11 @@ export const moviesReducer = (state = initialState, {type, payload}) => {
       return {
         ...state,
         movie: payload,
+      };
+    case CLEAR_MOVIE:
+      return {
+        ...state,
+        movie: {},
       };
     case LOADER_SHOW:
       return {

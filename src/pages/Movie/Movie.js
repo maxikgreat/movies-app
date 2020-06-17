@@ -11,11 +11,14 @@ import {MovieMainInfo} from '../../components/MovieMainInfo/MovieMainInfo';
 
 
 export const Movie = ({route}) => {
-  const {movies, fetchMovieById} = useMovies();
+  const {movies, fetchMovieById, clearActiveMovie} = useMovies();
   const {id} = route.params;
 
   useEffect(() => {
     fetchMovieById(id);
+    return () => {
+      clearActiveMovie();
+    };
   }, []);
 
   const {movie} = movies;
@@ -41,7 +44,7 @@ export const Movie = ({route}) => {
               <ScrollView>
                 <View style={styles.headerContainer}>
                   <Image
-                    style={styles.posterImage}
+                    style={movie.poster_path ? styles.posterImage : styles.noPosterImage}
                     source={movie.poster_path
                       ? {uri: `https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
                       : noImage

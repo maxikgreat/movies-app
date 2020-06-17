@@ -31,7 +31,9 @@ export const Listing = ({movies, filters, setFilters, pageChangedHandler}) => {
         : <>
             {movies.loadingListing &&
               <View style={styles.listingLoaderContainer}>
-                <ActivityIndicator size='large' color={accentColor} />
+                <View style={styles.listingLoaderHld}>
+                  <ActivityIndicator size='large' color={accentColor} />
+                </View>
               </View>
             }
             <FlatList

@@ -14,10 +14,15 @@ export const styles = StyleSheet.create({
     flex: 0.33,
     justifyContent: 'center',
     alignItems: 'center',
+    alignContent: 'center',
+    padding: 5,
   },
   textBold: {
     fontWeight: 'bold',
     fontSize: 30,
+  },
+  mark: {
+    textAlign: 'center',
   },
 });
 

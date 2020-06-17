@@ -30,5 +30,5 @@ export const styles = StyleSheet.create({
 });
 
 
-export const accentColor = theme.colors.primary;
-export const primaryColor = theme.colors.accent;
+export const accentColor = theme.colors.accent;
+export const primaryColor = theme.colors.primary;

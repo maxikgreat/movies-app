@@ -7,6 +7,9 @@ import noCompanyLogoImage from '../../images/no_company_logo.png';
 export const MovieMainInfo = ({title, desc, genres, year, countries, companies}) => {
 
   const renderGenres = () => {
+    if (genres.length === 0) {
+      return <Title>Unknown</Title>;
+    }
     return genres.map((genre,index) => {
       return genres.length - 1 === index
         ? <Title key={index}>{genre.name}</Title>
@@ -15,6 +18,9 @@ export const MovieMainInfo = ({title, desc, genres, year, countries, companies})
   };
 
   const renderCountries = () => {
+    if (countries.length === 0) {
+      return <Title style={styles.companyName}>Unknown</Title>;
+    }
     return countries.map((country, index) => {
       return countries.length - 1 === index
         ? <Text key={index} style={styles.companyName}>{country.name}</Text>
@@ -23,12 +29,15 @@ export const MovieMainInfo = ({title, desc, genres, year, countries, companies})
   };
 
   const renderCompanies = () => {
+    if (companies.length === 0) {
+      return <Title style={styles.companyName}>Unknown</Title>;
+    }
     return companies.map((company, index) => {
       return (
         <View style={styles.company} key={index}>
             <Image
               style={styles.companyImage}
-              source={company.logo_path ? 
+              source={company.logo_path ?
                 {uri: `https://image.tmdb.org/t/p/w200/${company.logo_path}`}
                 : noCompanyLogoImage
               }

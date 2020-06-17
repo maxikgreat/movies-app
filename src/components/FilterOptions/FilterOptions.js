@@ -28,7 +28,7 @@ export const FilterOptions = ({visible, setVisible, filters, setFilters}) => {
             <Title style={styles.title}>Filters</Title>
             <Button
               mode='contained'
-              color={!filters.include_adult ? accentColor : primaryColor}
+              color={!filters.include_adult ? primaryColor : accentColor}
               onPress={() => setFilters({
                 ...filters,
                 include_adult: !filters.include_adult,
@@ -61,7 +61,7 @@ export const FilterOptions = ({visible, setVisible, filters, setFilters}) => {
             />
             <Button
               mode='contained'
-              color={!filters.include_adult ? accentColor : primaryColor}
+              color={primaryColor}
               onPress={() => clearAllHandler()}
             >
               Clear all

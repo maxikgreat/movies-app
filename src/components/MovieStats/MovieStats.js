@@ -41,7 +41,7 @@ export const MovieStats = ({popularity, votes, average}) => {
         <Title style={styles.textBold}>{votes}</Title>
       </View>
       <View style={styles.statContainer}>
-        <Title>AVERAGE MARK</Title>
+        <Title style={styles.mark}>AVERAGE MARK</Title>
         <Title style={{...styles.textBold, ...checkAverage()}}>{average}</Title>
       </View>
     </View>

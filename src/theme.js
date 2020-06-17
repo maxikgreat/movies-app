@@ -7,6 +7,6 @@ export const theme = {
     primary: '#943dff',
     accent: '#ffc83d',
     background: '#4a2481',
-    text: '#fffcdf',
+    text: '#fff',
   },
 };

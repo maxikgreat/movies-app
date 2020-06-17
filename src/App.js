@@ -3,7 +3,7 @@ import React from 'react';
 import {StatusBar} from 'react-native';
 import {theme} from './theme';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Listing} from './pages/Listing/Listing';
+import {Home} from './pages/Home/Home';
 import {Movie} from './pages/Movie/Movie';
 
 const StackNavigator = createStackNavigator();
@@ -26,7 +26,7 @@ export const App = () => {
       <StackNavigator.Navigator mode='card' initialRouteName='Movies'>
         <StackNavigator.Screen
           name='Movies'
-          component={Listing}
+          component={Home}
           options={navigationHeader}
         />
         <StackNavigator.Screen

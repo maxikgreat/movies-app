@@ -7,12 +7,12 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.colors.background,
   },
   header: {
-    flex: 0.15,
+    flex: 0.1,
     padding: 15,
   },
   main: {
     padding: 15,
-    flex: 0.85,
+    flex: 0.9,
   },
   input: {
     height: 50,

@@ -3,7 +3,7 @@ import { theme } from '../../theme';
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 0.6,
+    flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
@@ -11,6 +11,10 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: 'bold',
+  },
+  image: {
+    width: '70%',
+    marginTop: 10,
   },
 });
 

@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
-import {Title, Button} from 'react-native-paper';
+import React from 'react';
+import {SafeAreaView, Image} from 'react-native';
+import {Title} from 'react-native-paper';
 import {styles, accentColor} from './styles';
 import Icon from 'react-native-vector-icons/Entypo';
+import typeImg from '../../images/type.gif';
 import * as Animatable from 'react-native-animatable';
 
 
@@ -11,7 +12,7 @@ export const StartType = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Animatable.View
-        animation='slideInDown'
+        animation='pulse'
         iterationCount='infinite'
         direction='alternate'
       >
@@ -24,6 +25,7 @@ export const StartType = () => {
       >
         <Title style={styles.title}>START TYPING</Title>
       </Animatable.View>
+      <Image style={styles.image} source={typeImg} />
     </SafeAreaView>
   );
 };

@@ -10,14 +10,18 @@ export const useMovies = () => {
     input: '',
   });
 
-  const fetchList = () => {
-    dispatch(fetchListAction());
+  const filtersChangedHandler = (text) => {
+    fetchList(filters.input);
+  };
+
+  const fetchList = (query) => {
+    dispatch(fetchListAction(query));
   };
 
   return {
     movies,
     filters,
     setFilters,
-    fetchList,
+    filtersChangedHandler,
   };
 };

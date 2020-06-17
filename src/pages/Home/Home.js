@@ -1,18 +1,22 @@
-import React from 'react';
-import {SafeAreaView, View, FlatList} from 'react-native';
+import React, {useEffect} from 'react';
+import {SafeAreaView, View,} from 'react-native';
 import {styles, accentColor} from './style';
-import {Button, TextInput, Title, Paragraph} from 'react-native-paper';
+import {Button, TextInput} from 'react-native-paper';
 import {useMovies} from '../../hooks/useMovies';
-import Icon from 'react-native-vector-icons/AntDesign';
-import { StartType } from '../../components/StartType/StartType';
+import {StartType} from '../../components/StartType/StartType';
+import {Listing} from '../../components/Listing/Listing';
 
-export const Listing = () => {
+export const Home = () => {
   const {
     movies,
     filters,
     setFilters,
-    fetchList
+    filtersChangedHandler,
   } = useMovies();
+
+  useEffect(() => {
+    filtersChangedHandler();
+  }, [filters]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -35,7 +39,7 @@ export const Listing = () => {
         {
           !filters.input
           ? <StartType />
-          : null
+          : <Listing movies={movies}/>
         }
       </View>
     </SafeAreaView>

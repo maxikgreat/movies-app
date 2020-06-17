@@ -1,7 +1,7 @@
 import {FETCH_MOVIE_BY_ID, FETCH_LIST, LOADER_SHOW, LOADER_HIDE} from '../types';
 
 const initialState = {
-  loading: false,
+  loading: true,
   error: '',
   listing: {},
 };

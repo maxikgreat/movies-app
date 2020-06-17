@@ -4,11 +4,15 @@ import config from '../../../config';
 
 const {BASE_URL, API_KEY} = config;
 
-export const fetchListAction = (query = 'Avengers') => {
+export const fetchListAction = (query) => {
   return async dispatch => {
+    // console.log(query);
     dispatch({
       type: LOADER_SHOW,
     });
+    if (!query) {
+      return;
+    }
     const request = `${BASE_URL}search/movie?api_key=${API_KEY}&query=${query}`;
     try {
       const response = await axios.get(request);

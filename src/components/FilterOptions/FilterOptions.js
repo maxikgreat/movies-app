@@ -42,6 +42,7 @@ export const FilterOptions = ({visible, setVisible, filters, setFilters}) => {
               label='Region'
               style={styles.input}
               value={filters.region}
+              autoCorrect={false}
               onChangeText={text => setFilters({
                 ...filters,
                 region: text,
@@ -52,6 +53,7 @@ export const FilterOptions = ({visible, setVisible, filters, setFilters}) => {
               label='Year'
               style={styles.input}
               value={filters.year}
+              autoCorrect={false}
               onChangeText={text => setFilters({
                 ...filters,
                 year: text,

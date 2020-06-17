@@ -42,6 +42,7 @@ export const Home = () => {
             placeholder='Start typing...'
             style={styles.input}
             value={filters.input}
+            autoCorrect={false}
             onChangeText={text => setFilters({...filters, query: text, page: 1})}
           />
           <View>

@@ -43,6 +43,14 @@ export const styles = StyleSheet.create({
   statsContainer: {
     flex: 0.4,
   },
+  adultImage: {
+    position: 'absolute',
+    top: '5%',
+    left: '5%',
+    width: 50,
+    height: 50,
+    zIndex: 10,
+  },
 });
 
 export const accentColor = theme.colors.accent;

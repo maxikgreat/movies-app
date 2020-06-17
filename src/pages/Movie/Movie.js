@@ -8,6 +8,7 @@ import noBackdropImage from '../../images/no_backdrop.png';
 import noImage from '../../images/no_image.png';
 import {MovieStats} from '../../components/MovieStats/MovieStats';
 import {MovieMainInfo} from '../../components/MovieMainInfo/MovieMainInfo';
+import adultImage from '../../images/adult.png';
 
 
 export const Movie = ({route}) => {
@@ -51,6 +52,11 @@ export const Movie = ({route}) => {
               />
               <ScrollView>
                 <View style={styles.headerContainer}>
+                  {
+                    movie.adult
+                    ? <Image source={adultImage} style={styles.adultImage} />
+                    : null
+                  }
                   <Image
                     style={movie.poster_path ? styles.posterImage : styles.noPosterImage}
                     source={movie.poster_path

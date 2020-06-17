@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView, View, Image, ImageBackground, ScrollView} from 'react-native';
 import {styles, accentColor} from './styles';
-import {ActivityIndicator} from 'react-native-paper';
+import {ActivityIndicator, Title} from 'react-native-paper';
 import {useMovies} from '../../hooks/useMovies';
 import {BlurView} from '@react-native-community/blur';
 import noBackdropImage from '../../images/no_backdrop.png';
@@ -21,7 +21,15 @@ export const Movie = ({route}) => {
     };
   }, []);
 
-  const {movie} = movies;
+  const {movie, error} = movies;
+
+  if (error) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Title>{error}</Title>
+      </SafeAreaView>
+    )
+  }
 
   return (
     <SafeAreaView style={styles.container}>

@@ -19,7 +19,9 @@ export const Listing = ({movies, filters, setFilters, pageChangedHandler}) => {
   };
 
   useEffect(() => {
-    pageChangedHandler();
+    if (filters.page !== 1) {
+      pageChangedHandler();
+    }
   }, [filters.page]);
 
   return (

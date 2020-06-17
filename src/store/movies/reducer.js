@@ -5,6 +5,7 @@ import {
   LOADER_LISTING_SHOW,
   LOADER_LISTING_HIDE,
   CLEAR_MOVIE,
+  ERROR,
 } from '../types';
 
 const initialState = {
@@ -59,6 +60,11 @@ export const moviesReducer = (state = initialState, {type, payload}) => {
       return {
         ...state,
         loadingListing: false,
+      };
+    case ERROR:
+      return {
+        ...state,
+        error: payload,
       };
     default: return state;
   }

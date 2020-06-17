@@ -9,3 +9,5 @@ export const LOADER_HIDE = 'LOADER_HIDE';
 export const LOADER_LISTING_SHOW = 'LOADER_LISTING_SHOW';
 export const LOADER_LISTING_HIDE = 'LOADER_LISTING_HIDE';
 
+export const ERROR = 'ERROR';
+

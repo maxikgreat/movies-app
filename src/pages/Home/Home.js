@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {SafeAreaView, View} from 'react-native';
 import {styles, accentColor} from './style';
-import {Button, TextInput} from 'react-native-paper';
+import {Button, TextInput, Title} from 'react-native-paper';
 import {useMovies} from '../../hooks/useMovies';
 import {StartType} from '../../components/StartType/StartType';
 import {Listing} from '../../components/Listing/Listing';
@@ -20,6 +20,14 @@ export const Home = () => {
   useEffect(() => {
     filtersChangedHandler();
   }, [filters.query, filters.include_adult, filters.region, filters.year]);
+
+  if (movies.error) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Title>{movies.error}</Title>
+      </SafeAreaView>
+    )
+  }
 
   return (
     <SafeAreaView style={styles.container}>

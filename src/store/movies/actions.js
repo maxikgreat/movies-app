@@ -7,6 +7,7 @@ import {
   LOADER_LISTING_SHOW,
   FETCH_MOVIE_BY_ID,
   CLEAR_MOVIE,
+  ERROR,
 } from '../types';
 import axios from 'axios';
 import config from '../../../config';
@@ -36,7 +37,10 @@ export const fetchListAction = (filters) => {
         payload: response.data,
       });
     } catch (e) {
-      console.log(e);
+      dispatch({
+        type: ERROR,
+        payload: e.message,
+      });
     }
     dispatch({
       type: LOADER_HIDE,
@@ -57,7 +61,10 @@ export const fetchNextPageAction = (filters) => {
         payload: response.data,
       });
     } catch (e) {
-      console.log(e);
+      dispatch({
+        type: ERROR,
+        payload: e.message,
+      });
     }
     dispatch({
       type: LOADER_LISTING_HIDE,
@@ -70,12 +77,19 @@ export const fetchMovieByIdAction = (id) => {
     dispatch({
       type: LOADER_SHOW,
     });
-    const request = `${BASE_URL}movie/${id}?api_key=${API_KEY}&`;
-    const response = await axios.get(request);
-    dispatch({
-      type: FETCH_MOVIE_BY_ID,
-      payload: response.data,
-    });
+    try {
+      const request = `${BASE_URL}movie/${id}?api_key=${API_KEY}&`;
+      const response = await axios.get(request);
+      dispatch({
+        type: FETCH_MOVIE_BY_ID,
+        payload: response.data,
+      });
+    } catch (e) {
+      dispatch({
+        type: ERROR,
+        payload: e.message,
+      });
+    }
     dispatch({
       type: LOADER_HIDE,
     });

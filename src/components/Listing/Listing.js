@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import {SafeAreaView, View} from 'react-native';
 import {ActivityIndicator} from 'react-native-paper';
 import {styles, accentColor} from './styles';
@@ -32,6 +32,7 @@ export const Listing = ({movies, filters, setFilters, pageChangedHandler}) => {
           <ActivityIndicator size='large' color={accentColor}/>
         </View>
         : <>
+          {/* {console.log(flatIndex)} */}
             {movies.loadingListing &&
               <View style={styles.listingLoaderContainer}>
                 <View style={styles.listingLoaderHld}>
@@ -40,8 +41,12 @@ export const Listing = ({movies, filters, setFilters, pageChangedHandler}) => {
               </View>
             }
             <FlatList
+              initialNumToRender={20}
               data={movies.listing.results}
-              renderItem={item => <MovieCard movie={item.item} delayAnimation={item.index * 100}/>}
+              renderItem={item => <MovieCard
+                movie={item.item}
+                delayAnimation={item.index * 100}
+              />}
               keyExtractor={item => item.id}
               numColumns={2}
               onEndReachedThreshold={0.5}
